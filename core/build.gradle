@@ -3,9 +3,20 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'io.github.lexadiky.akore.blogger'
+group = 'com.github.akore-org'
 version = '1.0'
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.github.akore-org"
+            artifactId "blogger"
+            version "1.0"
+            from components.java
+        }
+    }
 }
