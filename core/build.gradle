@@ -1,0 +1,23 @@
+plugins {
+    id 'kotlin'
+    id 'maven-publish'
+}
+
+group = 'io.github.lexadiky.akore.blogger'
+version = '1.0'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'io.github.lexadiky.akore.blogger'
+                artifactId = 'core'
+                version = '1.0'
+            }
+        }
+    }
+}
