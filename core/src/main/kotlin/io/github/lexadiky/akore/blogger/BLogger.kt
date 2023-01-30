@@ -1,6 +1,8 @@
 package io.github.lexadiky.akore.blogger
 
-object BLogger : ContextualLoggerDelegate {
+import io.github.lexadiky.akore.blogger.impl.StaticContextualLogger
+
+object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
 
     private var internalDelegate: LoggerDelegate? = null
     private val delegate: LoggerDelegate
@@ -10,9 +12,9 @@ object BLogger : ContextualLoggerDelegate {
         delegate.log(level, tag, message, throwable)
     }
 
-    override fun tag(tag: String) = apply {
-        delegate.tag(tag)
-    }
+    override fun tag(tag: String) = StaticContextualLogger.apply {
+        contextTag.set(tag)
+    } as ContextualLoggerDelegate
 
     fun install(delegate: LoggerDelegate) {
         if (internalDelegate == null) {
