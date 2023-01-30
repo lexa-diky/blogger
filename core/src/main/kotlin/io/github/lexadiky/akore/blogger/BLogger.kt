@@ -1,12 +1,13 @@
 package io.github.lexadiky.akore.blogger
 
+import io.github.lexadiky.akore.blogger.impl.NoOpLoggerDelegate
 import io.github.lexadiky.akore.blogger.impl.StaticContextualLogger
 
 object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
 
     private var internalDelegate: LoggerDelegate? = null
     private val delegate: LoggerDelegate
-        get() = internalDelegate ?: kotlin.error("no logger delegate initialized")
+        get() = internalDelegate ?: NoOpLoggerDelegate
 
     override fun log(level: LoggerLevel, tag: String?, message: String, throwable: Throwable?) {
         delegate.log(level, tag, message, throwable)
