@@ -25,7 +25,9 @@ class TestLoggerDelegate : LoggerDelegate {
 
         fun install(blogger: BLogger): TestLoggerDelegate {
             val self = TestLoggerDelegate()
-            blogger.install(self)
+            blogger.configure {
+                source pipe self
+            }
             return self
         }
     }

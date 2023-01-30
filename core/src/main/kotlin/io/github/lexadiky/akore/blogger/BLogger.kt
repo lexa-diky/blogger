@@ -13,15 +13,22 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
         delegate.log(level, tag, message, throwable)
     }
 
-    override fun tag(tag: String) = StaticContextualLogger.apply {
+    override fun tag(tag: String): ContextualLoggerDelegate = StaticContextualLogger.apply {
         contextTag.set(tag)
-    } as ContextualLoggerDelegate
+    }
 
-    fun install(delegate: LoggerDelegate) {
+    fun configure(conf: LoggerConfigurator.() -> Unit) {
+        val configurator = LoggerConfigurator()
+        configurator.conf()
+        install(configurator.build())
+    }
+
+    private fun install(delegate: LoggerDelegate) {
         if (internalDelegate == null) {
             internalDelegate = delegate
         } else {
             error("logger delegate already initialized")
         }
     }
+
 }
