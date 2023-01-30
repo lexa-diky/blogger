@@ -1,0 +1,62 @@
+plugins {
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+    id 'com.android.library'
+}
+
+group = 'com.github.akore-org'
+version = '1.0'
+
+android {
+    namespace 'io.github.lexadiky.akore.blogger.logcat'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    api project(":core")
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.github.akore-org.blogger"
+            artifactId "logcat"
+            version "1.0"
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}

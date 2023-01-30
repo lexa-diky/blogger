@@ -23,8 +23,8 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId "com.github.akore-org"
-            artifactId "blogger"
+            groupId "com.github.akore-org.blogger"
+            artifactId "core"
             version "1.0"
             from components.java
         }
