@@ -1,4 +1,4 @@
-package io.github.lexadiky.akore.blogger
+package io.github.lexadiky.akore.blogger.harness
 
 import org.junit.jupiter.api.Assertions
 

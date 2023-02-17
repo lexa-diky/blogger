@@ -2,6 +2,7 @@
 
 package io.github.lexadiky.akore.blogger
 
+import java.lang.IllegalStateException
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
@@ -30,4 +31,7 @@ fun ContextualLoggerDelegate.assert(message: String, condition: Boolean) {
         returns() implies condition
     }
     log(LoggerLevel.ASSERT, null, message, AssertionError(message))
+    if (!condition) {
+        throw IllegalStateException(message)
+    }
 }

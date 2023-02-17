@@ -9,7 +9,7 @@ class Sample {
         val printlnLogger = LoggerDelegate { level, tag, message, throwable ->
             println(message)
         }
-        BLogger.configure {
+        BLogger.configure(override = true) {
             source pipeTo printlnLogger where { level, _, _, _ ->
                 level != LoggerLevel.ERROR
             }

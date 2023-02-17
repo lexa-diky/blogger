@@ -1,5 +1,6 @@
 package io.github.lexadiky.akore.blogger
 
+import io.github.lexadiky.akore.blogger.harness.EqAssertionValue
 import org.junit.jupiter.api.Assertions
 
 class TestLoggerDelegate : LoggerDelegate {
@@ -25,7 +26,7 @@ class TestLoggerDelegate : LoggerDelegate {
 
         fun install(blogger: BLogger): TestLoggerDelegate {
             val self = TestLoggerDelegate()
-            blogger.configure {
+            blogger.configure(override = true) {
                 source pipeTo self
             }
             return self

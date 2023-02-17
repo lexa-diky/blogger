@@ -17,14 +17,14 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
         contextTag.set(tag)
     }
 
-    fun configure(conf: LoggerConfigurator.() -> Unit) {
+    fun configure(override: Boolean = false, conf: LoggerConfigurator.() -> Unit) {
         val configurator = LoggerConfigurator()
         configurator.conf()
-        install(configurator.build())
+        install(override, configurator.build())
     }
 
-    private fun install(delegate: LoggerDelegate) {
-        if (internalDelegate == null) {
+    private fun install(override: Boolean, delegate: LoggerDelegate) {
+        if (internalDelegate == null || override) {
             internalDelegate = delegate
         } else {
             error("logger delegate already initialized")
