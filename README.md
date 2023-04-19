@@ -20,8 +20,9 @@ Or use one of pre-defined loggers:
 #### Attach desired logger
 
 ```kotlin  
-BLogger.configure {  
- source pipeTo MyLogger()}  
+BLogger.configure { 
+    source pipeTo MyLogger()
+}  
 ```
 
 ### Log
