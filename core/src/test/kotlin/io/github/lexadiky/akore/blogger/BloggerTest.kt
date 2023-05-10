@@ -1,5 +1,6 @@
 package io.github.lexadiky.akore.blogger
 
+import io.github.lexadiky.akore.blogger.harness.TestLoggerDelegate
 import org.junit.jupiter.api.Test
 
 class BloggerTest {
