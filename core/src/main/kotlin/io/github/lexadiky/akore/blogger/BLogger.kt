@@ -9,7 +9,7 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
     private val delegate: LoggerDelegate
         get() = internalDelegate ?: NoOpLoggerDelegate
 
-    override fun log(level: LoggerLevel, tag: String?, message: String, throwable: Throwable?) {
+    override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
         delegate.log(level, tag, message, throwable)
     }
 
@@ -28,5 +28,4 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
             error("logger delegate already initialized")
         }
     }
-
 }

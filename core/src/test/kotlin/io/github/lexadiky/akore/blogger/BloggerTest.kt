@@ -14,7 +14,7 @@ class BloggerTest {
 
         tester.assert {
             message {
-                level eq LoggerLevel.INFO
+                level eq LogLevel.INFO
                 message eq "some message"
                 tag eq "io.github.lexadiky.akore.blogger.BloggerTest"
             }

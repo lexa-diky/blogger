@@ -7,17 +7,17 @@ class LoggerConfigurator {
 
     val source: LogsProducerMarker = LogsProducerMarker
 
-    private var currentBuildingLoggerDelegate: LoggerDelegate? = null
+    private var latestBuildingLoggerDelegate: LoggerDelegate? = null
 
     infix fun LogsProducerMarker.pipeTo(to: LoggerDelegate): LoggerMapping {
-        installCurrentDelegate()
-        currentBuildingLoggerDelegate = to
+        installLatestDelegate()
+        latestBuildingLoggerDelegate = to
         return LoggerMapping
     }
 
     infix fun LoggerMapping.where(condition: LoggerDelegateParametersConsumer<Boolean>) {
-        val wrapLogger = currentBuildingLoggerDelegate
-        currentBuildingLoggerDelegate = LoggerDelegate { level, tag, message, throwable ->
+        val wrapLogger = latestBuildingLoggerDelegate
+        latestBuildingLoggerDelegate = LoggerDelegate { level, tag, message, throwable ->
             if (condition(level, tag, message, throwable)) {
                 wrapLogger?.log(level, tag, message, throwable)
             }
@@ -25,15 +25,15 @@ class LoggerConfigurator {
     }
 
     internal fun build(): LoggerDelegate {
-        installCurrentDelegate()
+        installLatestDelegate()
 
         return fanOutLogger
     }
 
-    private fun installCurrentDelegate() {
-        if (currentBuildingLoggerDelegate != null) {
-            fanOutLogger.install(currentBuildingLoggerDelegate!!)
-            currentBuildingLoggerDelegate = null
+    private fun installLatestDelegate() {
+        if (latestBuildingLoggerDelegate != null) {
+            fanOutLogger.install(latestBuildingLoggerDelegate!!)
+            latestBuildingLoggerDelegate = null
         }
     }
 

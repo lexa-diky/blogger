@@ -1,5 +1,5 @@
 package io.github.lexadiky.akore.blogger
 
-enum class LoggerLevel {
+enum class LogLevel {
     VERBOSE, DEBUG, INFO, WARNING, ERROR, ASSERT
 }

@@ -1,9 +1,8 @@
 package io.github.lexadiky.akore.blogger.logcat
 
 import io.github.lexadiky.akore.blogger.BLogger
-import io.github.lexadiky.akore.blogger.LoggerLevel
+import io.github.lexadiky.akore.blogger.LogLevel
 import io.github.lexadiky.akore.blogger.info
-import io.github.lexadiky.akore.blogger.tagged
 import org.junit.jupiter.api.Test
 
 class Sample {
@@ -12,7 +11,7 @@ class Sample {
     fun installation() {
         BLogger.configure {
             source pipeTo logcat where { level, _, _, _ ->
-                level != LoggerLevel.ERROR
+                level != LogLevel.ERROR
             }
         }
         BLogger.tag("TAG")

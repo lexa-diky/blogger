@@ -11,7 +11,7 @@ class Sample {
         }
         BLogger.configure(override = true) {
             source pipeTo printlnLogger where { level, _, _, _ ->
-                level != LoggerLevel.ERROR
+                level != LogLevel.ERROR
             }
         }
 

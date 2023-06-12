@@ -2,14 +2,14 @@ package io.github.lexadiky.akore.blogger.harness
 
 import io.github.lexadiky.akore.blogger.BLogger
 import io.github.lexadiky.akore.blogger.LoggerDelegate
-import io.github.lexadiky.akore.blogger.LoggerLevel
+import io.github.lexadiky.akore.blogger.LogLevel
 import org.junit.jupiter.api.Assertions
 
 class TestLoggerDelegate : LoggerDelegate {
 
     private val records: ArrayList<Record> = ArrayList()
 
-    override fun log(level: LoggerLevel, tag: String?, message: String, throwable: Throwable?) {
+    override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
         this.records += Record(level, tag, message, throwable)
     }
 
@@ -18,7 +18,7 @@ class TestLoggerDelegate : LoggerDelegate {
     }
 
     data class Record(
-        val level: LoggerLevel,
+        val level: LogLevel,
         val tag: String?,
         val message: String,
         val throwable: Throwable?

@@ -7,30 +7,30 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
 fun ContextualLoggerDelegate.verbose(message: String) {
-    log(LoggerLevel.VERBOSE, null, message, null)
+    log(LogLevel.VERBOSE, null, message, null)
 }
 
 fun ContextualLoggerDelegate.debug(message: String) {
-    log(LoggerLevel.DEBUG, null, message, null)
+    log(LogLevel.DEBUG, null, message, null)
 }
 
 fun ContextualLoggerDelegate.info(message: String) {
-    log(LoggerLevel.INFO, null, message, null)
+    log(LogLevel.INFO, null, message, null)
 }
 
 fun ContextualLoggerDelegate.warning(message: String) {
-    log(LoggerLevel.WARNING, null, message, null)
+    log(LogLevel.WARNING, null, message, null)
 }
 
 fun ContextualLoggerDelegate.error(message: String, throwable: Throwable? = null) {
-    log(LoggerLevel.ERROR, null, message, throwable)
+    log(LogLevel.ERROR, null, message, throwable)
 }
 
 fun ContextualLoggerDelegate.assert(message: String, condition: Boolean) {
     contract {
         returns() implies condition
     }
-    log(LoggerLevel.ASSERT, null, message, AssertionError(message))
+    log(LogLevel.ASSERT, null, message, AssertionError(message))
     if (!condition) {
         throw IllegalStateException(message)
     }
