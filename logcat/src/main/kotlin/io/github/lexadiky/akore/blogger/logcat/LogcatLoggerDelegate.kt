@@ -5,6 +5,9 @@ import io.github.lexadiky.akore.blogger.LoggerConfigurator
 import io.github.lexadiky.akore.blogger.LoggerDelegate
 import io.github.lexadiky.akore.blogger.LogLevel
 
+/**
+ * A delegate for logging messages to the Android Logcat.
+ */
 internal class LogcatLoggerDelegate : LoggerDelegate {
 
     override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {

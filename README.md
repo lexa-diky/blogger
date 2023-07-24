@@ -11,7 +11,7 @@ Simplistic logger facade. Because you don't need anything more.
 ```kotlin  
 internal class MyLogger : LoggerDelegate {  
   
- override fun log(level: LoggerLevel, tag: String?, message: String, throwable: Throwable?) { println("$tag: $message") }}  
+ override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) { println("$tag: $message") }}  
 ```  
 
 Or use one of pre-defined loggers:
@@ -38,7 +38,7 @@ BLogger.tagged()
 
 // or if you need more control
 BLogger.log(  
-	level = LoggerLevel.DEBUG,  
+	level = LogLevel.DEBUG,  
     tag = "MY_TAG",  
     message = "MY_MESSAGE",  
     throwable = Exception("Oooops!")
