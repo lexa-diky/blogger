@@ -1,4 +1,4 @@
-# AKore Blogger
+# Blogger
 
 Simplistic logger facade. Because you don't need anything more.
 
