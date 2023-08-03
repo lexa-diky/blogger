@@ -15,7 +15,7 @@ internal class MyLogger : LoggerDelegate {
 ```  
 
 Or use one of pre-defined loggers:
-- (android) logical
+- (android) LogCat
 
 #### Attach desired logger
 
