@@ -3,6 +3,10 @@ package io.github.lexadiky.akore.blogger
 import io.github.lexadiky.akore.blogger.impl.InlineContextualLogger
 import io.github.lexadiky.akore.blogger.impl.NoOpLoggerDelegate
 
+/**
+ * BLogger is a singleton object that implements the [LoggerDelegate] and [ContextualLoggerDelegate.Factory] interfaces.
+ * It provides a logging mechanism for the application.
+ */
 object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
 
     private var internalDelegate: LoggerDelegate? = null
