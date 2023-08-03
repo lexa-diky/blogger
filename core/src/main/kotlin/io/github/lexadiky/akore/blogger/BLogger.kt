@@ -9,6 +9,8 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
     private val delegate: LoggerDelegate
         get() = internalDelegate ?: NoOpLoggerDelegate
 
+    internal var throwOnFailedAssertion: Boolean = true
+
     override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
         delegate.log(level, tag, message, throwable)
     }

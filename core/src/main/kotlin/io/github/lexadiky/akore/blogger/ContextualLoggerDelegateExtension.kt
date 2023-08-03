@@ -26,12 +26,16 @@ fun ContextualLoggerDelegate.error(message: String, throwable: Throwable? = null
     log(LogLevel.ERROR, null, message, throwable)
 }
 
-fun ContextualLoggerDelegate.assert(message: String, condition: Boolean) {
+fun ContextualLoggerDelegate.assert(
+    message: String,
+    condition: Boolean,
+    throws: Boolean = BLogger.throwOnFailedAssertion
+) {
     contract {
-        returns() implies condition
+        returns() implies (condition && !throws)
     }
     log(LogLevel.ASSERT, null, message, AssertionError(message))
-    if (!condition) {
-        throw IllegalStateException(message)
+    if (!condition && throws) {
+        throw AssertionError(message)
     }
 }

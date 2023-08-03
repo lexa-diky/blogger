@@ -6,6 +6,7 @@ class LoggerConfigurator {
     private val fanOutLogger = FanOutLogger()
 
     val source: LogsProducerMarker = LogsProducerMarker
+    var throwOnFailedAssertion: Boolean = true
 
     private var latestBuildingLoggerDelegate: LoggerDelegate? = null
 
@@ -35,6 +36,10 @@ class LoggerConfigurator {
             fanOutLogger.install(latestBuildingLoggerDelegate!!)
             latestBuildingLoggerDelegate = null
         }
+    }
+
+    private fun installParameters() {
+        BLogger.throwOnFailedAssertion = this.throwOnFailedAssertion
     }
 
     object LogsProducerMarker

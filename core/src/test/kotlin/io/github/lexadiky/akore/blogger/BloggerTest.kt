@@ -20,4 +20,18 @@ class BloggerTest {
             }
         }
     }
+
+    @Test
+    fun `WHEN fail assertion with no throw setting THEN do not throw`() {
+        BLogger.configure {
+            throwOnFailedAssertion = true
+            source pipeTo LoggerDelegate { _, message, _, _ -> println(message) }
+        }
+
+        BLogger.tag("hello")
+            .assert("should not fail", false)
+
+        @Suppress("SimplifyBooleanWithConstants")
+        assert(true == true)
+    }
 }
