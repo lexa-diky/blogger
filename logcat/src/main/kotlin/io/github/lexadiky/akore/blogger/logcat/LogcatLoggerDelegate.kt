@@ -59,5 +59,3 @@ internal class LogcatLoggerDelegate : LoggerDelegate {
         private const val MAX_TAG_SIZE = 23
     }
 }
-
-val LoggerConfigurator.logcat: LoggerDelegate get() = LogcatLoggerDelegate()
