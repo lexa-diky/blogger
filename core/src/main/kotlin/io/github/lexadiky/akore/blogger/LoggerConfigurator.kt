@@ -38,7 +38,7 @@ class LoggerConfigurator {
         }
     }
 
-    private fun installParameters() {
+    internal fun installParameters() {
         BLogger.throwOnFailedAssertion = this.throwOnFailedAssertion
     }
 

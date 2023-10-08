@@ -24,6 +24,7 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
     fun configure(override: Boolean = false, conf: LoggerConfigurator.() -> Unit) {
         val configurator = LoggerConfigurator()
         configurator.conf()
+        configurator.installParameters()
         install(override, configurator.build())
     }
 

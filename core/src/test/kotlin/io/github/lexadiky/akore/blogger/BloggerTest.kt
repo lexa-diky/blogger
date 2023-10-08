@@ -24,7 +24,7 @@ class BloggerTest {
     @Test
     fun `WHEN fail assertion with no throw setting THEN do not throw`() {
         BLogger.configure {
-            throwOnFailedAssertion = true
+            throwOnFailedAssertion = false
             source pipeTo LoggerDelegate { _, message, _, _ -> println(message) }
         }
 
