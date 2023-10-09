@@ -2,7 +2,7 @@
 
 package io.github.lexadiky.akore.blogger
 
-import java.lang.IllegalStateException
+import kotlin.IllegalStateException
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
@@ -26,6 +26,15 @@ fun ContextualLoggerDelegate.error(message: String, throwable: Throwable? = null
     log(LogLevel.ERROR, null, message, throwable)
 }
 
+fun ContextualLoggerDelegate.panic(message: String, throwable: Throwable? = null): Nothing {
+    log(LogLevel.ERROR, null, message, throwable)
+    if (throwable != null) {
+        throw throwable
+    } else {
+        throw IllegalStateException(message)
+    }
+}
+
 fun ContextualLoggerDelegate.assert(
     message: String,
     condition: Boolean,
@@ -36,6 +45,6 @@ fun ContextualLoggerDelegate.assert(
     }
     log(LogLevel.ASSERT, null, message, AssertionError(message))
     if (!condition && throws) {
-        throw AssertionError(message)
+
     }
 }
