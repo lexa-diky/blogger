@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "blogger-kt"
-include ':core', ":logcat"
+include ':core', ":logcat", ":slf4j"

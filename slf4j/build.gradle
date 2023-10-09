@@ -1,0 +1,23 @@
+plugins {
+    id 'kotlin'
+    id 'maven-publish'
+}
+
+group = 'com.github.akore-org'
+version = '1.0'
+
+dependencies {
+    api project(":core")
+    implementation "org.slf4j:slf4j-api:2.0.9"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId "com.github.akore-org.blogger"
+            artifactId "slf4j"
+            version "1.0"
+            from components.java
+        }
+    }
+}
