@@ -35,4 +35,12 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
             error("logger delegate already initialized")
         }
     }
+
+    override fun toString(): String {
+        return "Blogger($internalDelegate)"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return other is BLogger
+    }
 }
