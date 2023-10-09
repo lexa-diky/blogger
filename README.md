@@ -1,4 +1,4 @@
-# AKore Blogger
+# Blogger
 
 Simplistic logger facade. Because you don't need anything more.
 
@@ -15,7 +15,7 @@ internal class MyLogger : LoggerDelegate {
 ```  
 
 Or use one of pre-defined loggers:
-- (android) logical
+- (android) LogCat
 
 #### Attach desired logger
 

@@ -13,6 +13,8 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
     private val delegate: LoggerDelegate
         get() = internalDelegate ?: NoOpLoggerDelegate
 
+    internal var throwOnFailedAssertion: Boolean = true
+
     override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
         delegate.log(level, tag, message, throwable)
     }
@@ -22,6 +24,7 @@ object BLogger : LoggerDelegate, ContextualLoggerDelegate.Factory {
     fun configure(override: Boolean = false, conf: LoggerConfigurator.() -> Unit) {
         val configurator = LoggerConfigurator()
         configurator.conf()
+        configurator.installParameters()
         install(override, configurator.build())
     }
 

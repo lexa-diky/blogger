@@ -10,6 +10,7 @@ class Sample {
             println(message)
         }
         BLogger.configure(override = true) {
+            throwOnFailedAssertion = true
             source pipeTo printlnLogger where { level, _, _, _ ->
                 level != LogLevel.ERROR
             }
