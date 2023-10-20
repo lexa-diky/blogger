@@ -1,10 +1,14 @@
 package io.github.lexadiky.akore.blogger.slf4j
 
 import io.github.lexadiky.akore.blogger.LogLevel
+import io.github.lexadiky.akore.blogger.LoggerConfigurator
 import io.github.lexadiky.akore.blogger.LoggerDelegate
 import org.slf4j.LoggerFactory
 import org.slf4j.event.Level
 
+/**
+ * Implementation of [LoggerDelegate] delegating actual logging into slf4j's logger.
+ */
 class Slf4JLoggerDelegate : LoggerDelegate {
 
     override fun log(level: LogLevel, tag: String?, message: String, throwable: Throwable?) {
@@ -29,3 +33,5 @@ class Slf4JLoggerDelegate : LoggerDelegate {
         LogLevel.ASSERT -> Level.ERROR
     }
 }
+
+val LoggerConfigurator.slf4j: LoggerDelegate get() = Slf4JLoggerDelegate()
